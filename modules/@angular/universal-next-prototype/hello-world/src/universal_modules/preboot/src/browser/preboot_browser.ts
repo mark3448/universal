@@ -40,6 +40,8 @@ export function prebootClient() {
     let prebootData = theWindow.prebootData || {};
     let apps = prebootData.apps || [];
 
+    console.log('calling preboot complete');
+
     // loop through each of the preboot apps
     apps.forEach(appData => completeApp(opts, appData));
 
@@ -57,6 +59,8 @@ export function prebootClient() {
   function completeApp(opts: PrebootCompleteOptions, appData: PrebootAppData) {
     opts = opts || {};
     appData = <PrebootAppData> (appData || {});
+
+    console.log('doing complete for app ' + appData.root.serverSelector);
 
     let theWindow = <Window> (opts.window || window);
     let root = <ServerClientRoot> (appData.root || {});
